@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import "./database";
+import contactsRoutes from "./routes/contacts.routes";
 
 /* --------------------------------- Config --------------------------------- */
 
@@ -25,6 +26,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 /* ---------------------------------- Ruta --------------------------------- */
-app.get("/", (req, res) => {
-  res.send("Hola desde el servidor");
-});
+app.use("/api/contacts", contactsRoutes);
