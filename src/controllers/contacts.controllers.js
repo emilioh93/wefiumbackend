@@ -20,6 +20,21 @@ contactsCtrl.newContact = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({
+      message: "Error al agregar contacto",
+    });
+  }
+};
+
+contactsCtrl.listContacts = async (req, res) => {
+  try {
+    const arrayContacts = await Contact.find();
+    res.status(200).json(arrayContacts);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error al listar contacto",
+    });
   }
 };
 
